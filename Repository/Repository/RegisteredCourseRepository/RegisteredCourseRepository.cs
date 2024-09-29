@@ -12,7 +12,7 @@ namespace Repository.Repository.RegisteredCourseRepository
             this._context = context;
         }
         public async Task<RegisteredCourse> AddAsync(RegisteredCourse registeredCourse)
-        {            
+        {
             await this._context.Set<RegisteredCourse>().AddAsync(registeredCourse);
             await this._context.SaveChangesAsync();
 
@@ -21,7 +21,7 @@ namespace Repository.Repository.RegisteredCourseRepository
 
         public async Task<List<CoursesResult>> FindAsync(int id)
         {
-            
+
             var result = await (from reg in _context.RegisteredCourses
                                 join c in _context.Courses on reg.CourseId equals c.Id
                                 join tc in _context.TeacherCourses on c.Id equals tc.CourseId
@@ -34,7 +34,7 @@ namespace Repository.Repository.RegisteredCourseRepository
                                     Credits = c.Credits,
                                     TeacherId = t.Id,
                                     TeacherName = t.Name
-                                                                        
+
                                 }).ToListAsync();
 
             return result;
@@ -59,29 +59,6 @@ namespace Repository.Repository.RegisteredCourseRepository
             }
             return null;
         }
-
-        public async Task<RegisteredCourse?> UpdateAsync(int id, RegisteredCourse registeredCourse)
-        {
-            try
-            {
-                var entity = _context.Set<RegisteredCourse>().FirstOrDefault(x => x.Id == id);
-
-                if (entity != null)
-                {
-                    entity.StudentId = registeredCourse.StudentId;
-                    entity.CourseId = registeredCourse.CourseId;
-
-                    _context.Set<RegisteredCourse>().Update(entity);
-                    await _context.SaveChangesAsync();
-
-                    return entity;
-                }
-            }
-            catch (Exception ex)
-            {
-                string message = ex.Message;
-            }
-            return null;
-        }
     }
+        
 }

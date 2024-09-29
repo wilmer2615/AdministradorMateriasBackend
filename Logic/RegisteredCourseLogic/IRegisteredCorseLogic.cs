@@ -6,8 +6,6 @@ namespace Logic.RegisteredCourseLogic
     {
         public Task<RegisteredCourseDto> AddAsync(RegisteredCourseDto registeredCourseDto);
 
-        public Task<RegisteredCourseDto> UpdateAsync(int id, RegisteredCourseDto registeredCourseDto);
-
         public Task<RegisteredCourseDto> RemoveAsync(int studentId, int courseId);
 
         public Task<IEnumerable<RegisteredCourseDto>> GetAllAsync();

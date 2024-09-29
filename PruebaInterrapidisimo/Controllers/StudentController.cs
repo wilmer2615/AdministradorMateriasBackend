@@ -62,30 +62,7 @@ namespace PruebaInterrapidisimo.Controllers
             }
             return NotFound(new { Message = "El estudiante no esta registrado en la base de datos!" });
         }
-
-        /// <summary>
-        /// Accion que permite la eliminacion de un estudiante.
-        /// </summary>
-        /// <param name="id">Identificador del estudiante a eliminar.</param>
-        /// <returns>Estudiante eliminado.</returns>
-        [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Remove(int id)
-        {
-            if (id <= 0)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var result = await _studentLogic.RemoveAsync(id);
-
-            if (result != null)
-            {
-                return Ok();
-            }
-            return NotFound(new { Message = "El estudiante no esta registrado en la base de datos!" });
-        }
+        
 
         /// <summary>
         /// Accion que permite listar los estudiantes.

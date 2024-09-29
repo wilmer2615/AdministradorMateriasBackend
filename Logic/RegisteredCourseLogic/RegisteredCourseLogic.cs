@@ -52,14 +52,6 @@ namespace Logic.RegisteredCourseLogic
 
             return result;
         }
-
-        public async Task<RegisteredCourseDto> UpdateAsync(int id, RegisteredCourseDto registeredCourseDto)
-        {
-            var entity = await this._registeredCorseRepository.UpdateAsync(id, _mapper.Map<RegisteredCourse>(registeredCourseDto));
-
-            var result = _mapper.Map<RegisteredCourseDto>(entity);
-
-            return result;
-        }
+                
     }
 }

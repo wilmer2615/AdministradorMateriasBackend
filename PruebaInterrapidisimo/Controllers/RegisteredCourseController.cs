@@ -33,33 +33,7 @@ namespace PruebaInterrapidisimo.Controllers
             }
 
             return Ok(await _registeredCourseLogic.AddAsync(registeredCourseDto));
-        }
-
-        /// <summary>
-        /// Accion que permite hacer la actualizacion de un registro.
-        /// </summary>
-        /// <param name="studentDto">Informacion actualizada del registro .</param>
-        /// <param name="id">Identificador del registro a modificar.</param>
-        /// <returns>Registro actualizado.</returns>
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RegisteredCourseDto))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(int id, [FromBody] RegisteredCourseDto registeredCourseDto)
-        {
-            // Se realiza la validacion del modelo.
-            if (!ModelState.IsValid || id <= 0)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var result = await _registeredCourseLogic.UpdateAsync(id, registeredCourseDto);
-
-            if (result != null)
-            {
-                return Ok();
-            }
-            return NotFound(new { Message = "El registro no se encuentra en la base de datos!" });
-        }
+        }        
 
         /// <summary>
         /// Accion que permite la eliminacion de un registro.
