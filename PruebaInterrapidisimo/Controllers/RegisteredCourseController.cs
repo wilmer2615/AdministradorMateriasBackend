@@ -66,18 +66,18 @@ namespace PruebaInterrapidisimo.Controllers
         /// </summary>
         /// <param name="id">Identificador del registro a eliminar.</param>
         /// <returns>Registro eliminado.</returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{studentId}/{courseId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(int studentId, int courseId)
         {
             // Se realiza la validacion.
-            if (id <= 0)
+            if (studentId <= 0 | courseId <= 0)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = await _registeredCourseLogic.RemoveAsync(id);
+            var result = await _registeredCourseLogic.RemoveAsync(studentId, courseId);
 
             if (result != null)
             {

@@ -44,9 +44,9 @@ namespace Logic.RegisteredCourseLogic
             return result;
         }
 
-        public async Task<RegisteredCourseDto> RemoveAsync(int id)
+        public async Task<RegisteredCourseDto> RemoveAsync(int studentId, int courseId)
         {
-            var entity = await this._registeredCorseRepository.RemoveAsync(id);
+            var entity = await this._registeredCorseRepository.RemoveAsync(studentId, courseId);
 
             var result = _mapper.Map<RegisteredCourseDto>(entity);
 

@@ -127,7 +127,7 @@ namespace PruebaInterrapidisimo.Controllers
         {
             var result = await _studentLogic.GetAllByCourseId(courseId);
             if (result == null)
-                return NotFound(new { Message = "El estudiante no esta registrado en la base de datos!" });
+                return NotFound(new { Message = "El curso no esta registrado en la base de datos!" });
 
             return Ok(result);
         }

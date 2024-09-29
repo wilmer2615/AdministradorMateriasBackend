@@ -46,9 +46,9 @@ namespace Repository.Repository.RegisteredCourseRepository
                 .ToListAsync();
         }
 
-        public async Task<RegisteredCourse?> RemoveAsync(int id)
+        public async Task<RegisteredCourse?> RemoveAsync(int studentId, int courseId)
         {
-            var entity = await _context.Set<RegisteredCourse>().FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await _context.Set<RegisteredCourse>().FirstOrDefaultAsync(x => x.StudentId == studentId && x.CourseId == courseId);
 
             if (entity != null)
             {
